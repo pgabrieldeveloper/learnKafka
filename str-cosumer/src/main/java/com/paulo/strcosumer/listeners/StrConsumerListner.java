@@ -18,7 +18,7 @@ public class StrConsumerListner {
         log.info("LOG :::: Menssagem Recebida: {}", message);
     }
 
-    @StrConsumerCustomListner(groupId = "grupo-2")
+    @StrConsumerCustomListner(groupId = "grupo-2", containerFactory = "strContainerFactoryInterceptor")
     public void outro(String message){
         log.info("OUTRO :::: Menssagem Recebida: {}", message);
     }
