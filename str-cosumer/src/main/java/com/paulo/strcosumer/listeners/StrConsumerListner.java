@@ -1,6 +1,7 @@
 package com.paulo.strcosumer.listeners;
 
 import com.paulo.strcosumer.custom.StrConsumerCustomListner;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -9,8 +10,10 @@ import org.springframework.stereotype.Component;
 public class StrConsumerListner {
 
     @StrConsumerCustomListner(groupId = "grupo-1")
+    @SneakyThrows
     public void crete(String message){
         log.info("CREATED ::: Menssagem Recebida: {}", message);
+        throw new IllegalArgumentException("EXCEPTION...");
     }
 
     @StrConsumerCustomListner(groupId = "grupo-1")
