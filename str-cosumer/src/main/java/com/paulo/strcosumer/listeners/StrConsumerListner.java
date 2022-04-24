@@ -1,26 +1,24 @@
 package com.paulo.strcosumer.listeners;
 
+import com.paulo.strcosumer.custom.StrConsumerCustomListner;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.kafka.annotation.TopicPartition;
 import org.springframework.stereotype.Component;
 
 @Component
 @Slf4j
 public class StrConsumerListner {
 
-
-    @KafkaListener(groupId = "group-1", topicPartitions = {@TopicPartition(topic = "str-topic", partitions = {"1"})} , containerFactory = "strContainerFactory")
+    @StrConsumerCustomListner(groupId = "grupo-1")
     public void crete(String message){
         log.info("CREATED ::: Menssagem Recebida: {}", message);
     }
 
-    @KafkaListener(groupId = "group-1", topicPartitions = {@TopicPartition(topic = "str-topic", partitions = {"0"})}, containerFactory = "strContainerFactory")
+    @StrConsumerCustomListner(groupId = "grupo-1")
     public void log(String message){
         log.info("LOG :::: Menssagem Recebida: {}", message);
     }
 
-    @KafkaListener(groupId = "group-2", topics = "str-topic", containerFactory = "strContainerFactory")
+    @StrConsumerCustomListner(groupId = "grupo-2")
     public void outro(String message){
         log.info("OUTRO :::: Menssagem Recebida: {}", message);
     }
